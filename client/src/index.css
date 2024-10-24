@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: rgb(59, 130, 246);
+}
+
+.scrollbarh::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.login-bg {
+  /* background-image: url(./Assets/loginbg.jpg); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.login-bg::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0000005f;
+  z-index: 1;
+}
+
+.signup-bg {
+  /* background-image: url(./Assets/signupbg.jpg); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.signup-bg::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #0000005f;
+  z-index: 1;
+}
+
+footer {
+  background-color: #ffffff;
+  padding: 10rem 0;
+}
+
+.ActiveAns {
+  max-height: 20rem;
+  padding: 2.8rem 4.5rem;
+  transition: 0.s ease;
+}
+
+.ActiveQue {
+  background-color: #ff4d30;
+  color: white;
+}
+
+.coloreDBtn {
+  background-color: #ff4d30;
+  color: white;
+}
+
+@media screen and (min-width: 1020px) {
+  .gc {
+    grid-template-areas: 'one two four' 'one two four-low';
+  }
+
+  .go {
+    grid-area: one;
+  }
+
+  .gt {
+    grid-area: two;
+  }
+
+  .gtu {
+    grid-area: four;
+  }
+
+  .gtl {
+    grid-area: four-low;
+  }
+}
