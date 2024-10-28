@@ -8,6 +8,7 @@ import Banner3 from "../assets/banner/Jewelery1.jpg"
 const Images = [Banner1, Banner2, Banner3];
 
 const ImgSlider = () => {
+
 const [currentIndex, setCurrentIndex] = useState(0);
 
 const nextImage = () => {
@@ -29,7 +30,7 @@ const prevImage = () => {
         type="button"
         alt="buttuon-left"
         onClick={prevImage}
-        class="w-bt h-nav bg-[#ffffff63] text-h3 absolute left-4 z-10 cursor-pointer hover:bg-[#ffffff78]"
+        className="w-bt h-nav bg-[#ffffff63] text-h3 absolute left-4 z-10 cursor-pointer hover:bg-[#ffffff78]"
       >
         <IoIosArrowDropleftCircle />
       </button>
@@ -42,22 +43,22 @@ const prevImage = () => {
         type="button"
         alt="buttuon-right"
         onClick={nextImage}
-        class="w-bt h-nav bg-[#ffffff63] text-h3 absolute right-4 z-10 cursor-pointer hover:bg-[#ffffff78]"
+        className="w-bt h-nav bg-[#ffffff63] text-h3 absolute right-4 z-10 cursor-pointer hover:bg-[#ffffff78]"
       >
         <IoIosArrowDroprightCircle />
       </button>
       <div className="w-test h-[4vh] mb-4 flex items-center justify-center gap-8 absolute z-10 bottom-0">
         <span
           className="w-[15px] h-[15px] mx-[2px] bg-yellow-500 rounded cursor-pointer"
-          onclick={Images}
+          onClick={Images}
         ></span>
         <span
           className="w-[15px] h-[15px] mx-[2px] bg-yellow-500 rounded cursor-pointer"
-          onclick={Images}
+          onClick={Images}
         ></span>
         <span
           className="w-[15px] h-[15px] mx-[2px] bg-yellow-500 rounded cursor-pointer"
-          onclick={Images}
+          onClick={Images}
         ></span>
       </div>
     </section>

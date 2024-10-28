@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const Producard = ({product}) => {
+const Producard = ({product , i}) => {
   const { id, image, price, title } = product;
   return (
       <div
-        key={id}
+        key={i}
         className=" bg-white h-auto px-2 py-1 flex flex-col border-2 border-gray-400 hover:border-slate-500 rounded-md items-center cursor-pointer"
       >
         <img

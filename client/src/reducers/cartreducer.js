@@ -8,11 +8,7 @@ const cartProducts = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case "ADD_TO_CART":
-      // const single = state.products.map((cart) => cart.product);
-      // const Cart = single.find((item) => item.id === action.payload.product.id);
       const Cart = state.products.find((item) => item.id === action.payload.id);
-      // const existingcart = state.products.map((item) => item.id === action.payload.product.id);
-      // console.log(existingcart);
       if (Cart) {
         newState = {
           ...state,
@@ -61,8 +57,8 @@ const cartProducts = (state = initialState, action) => {
       };
       localStorage.setItem("Cartitem", JSON.stringify(newState.products));
       return newState;
-    case "FETCH_CARTS":
-    return action.payload;
+    // case "FETCH_CARTS":
+    // return action.payload;
     default:
       return state;
   }

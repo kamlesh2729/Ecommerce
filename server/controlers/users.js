@@ -10,8 +10,9 @@ export const getAllUsers = async (req, res) => {
         _id: user._id,
         name: user.name,
         email:user.email,
-        about: user.about,
-        tags: user.tags,
+        address: user.address,
+        number: user.number,
+        carts: user.carts,
         joinedOn: user.joinedOn,
       });
     });
@@ -21,22 +22,22 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-// export const updateProfile = async (req, res) => {
-//   const { id: _id } = req.params;
-//   const { name, about, address, number } = req.body;
+export const updateProfile = async (req, res) => {
+  const { id: _id } = req.params;
+  const { name, about, address, number } = req.body;
 
-//   if (!mongoose.Types.ObjectId.isValid(_id)) {
-//     return res.status(404).send("User unavailable...");
-//   }
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("User unavailable...");
+  }
 
-//   try {
-//     const updatedProfile = await users.findByIdAndUpdate(
-//       _id,
-//       { $set: { name: name, about: about, address: address, number: number, } },
-//       { new: true }
-//     );
-//     res.status(200).json(updatedProfile);
-//   } catch (error) {
-//     res.status(405).json({ message: error.message });
-//   }
-// };
+  try {
+    const updatedProfile = await users.findByIdAndUpdate(
+      _id,
+      { $set: { name: name, about: about, address: address, number: number, } },
+      { new: true }
+    );
+    res.status(200).json(updatedProfile);
+  } catch (error) {
+    res.status(405).json({ message: error.message });
+  }
+};

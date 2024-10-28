@@ -13,7 +13,12 @@ API.interceptors.request.use((req) => {
 
 export const logIn = (authData) => API.post("/user/login", authData);
 export const signUp = (authData) => API.post("/user/signup", authData);
+
 export const addCart = (Id, product) => API.patch(`/user/addtocart/${Id}`, product);
-export const AllCarts = (Id) => API.get("/user/getAllCarts", Id);
+export const AllCarts = (Id) => API.post("/user/getAllCarts", Id);
+export const getAllCart = (userId) => API.get("/user/getAllCart/", userId);
+
+export const getAllUsers = () => API.get("/user/getAllUsers");
+export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData);
 
 

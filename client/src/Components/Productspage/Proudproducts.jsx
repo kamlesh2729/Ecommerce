@@ -49,8 +49,8 @@ const Proudproducts = () => {
       <h3 className=" py-8 text-h3 font-semibold">Products We are Proud of</h3>
       <div className="h-auto">
         <div className="w-[90vw] h-auto mx-auto pl-[0.18rem] grid grid-cols-com Lp-l:grid-cols-mod Lp-l:grid-rows-proud gap-7 py-4">
-          {ProudProduct.map((product, i) => {
-            return ( loading ? <SkeletonLoading /> : < Producard product={product} key={i} /> )
+          {ProudProduct.map((product, id) => {
+            return ( loading ? <SkeletonLoading /> : < Producard product={product} key={id} /> )
           })}
         </div>
       </div>

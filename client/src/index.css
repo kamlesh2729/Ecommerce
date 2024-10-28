@@ -89,6 +89,16 @@ footer {
   color: white;
 }
 
+.container {
+  max-width: 124rem;
+  margin: 0 auto;
+}
+
+.page-padding {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 @media screen and (min-width: 1020px) {
   .gc {
     grid-template-areas: 'one two four' 'one two four-low';

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 import { setCurrentUser } from "../actions/currentuseraction";
 import { TbMenu2, TbLetterX, TbShoppingCart } from "react-icons/tb";
@@ -18,7 +20,14 @@ const Navbar = ({ isOpen, setIsOpen }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const {Id} = useParams();
+
+  useGSAP(() => {
+    gsap.fromTo(
+      "#LogoW",
+      { y: -80, duration: 1, delay: 0.5, opacity:0, stagger:1 },
+      { y: 1, duration: 1, delay: 0.5, opacity:1, stagger:1 }
+    );
+  });
 
     const handleLogout = () => {
       dispatch({ type: "LOGOUT" });
@@ -101,8 +110,14 @@ const Navbar = ({ isOpen, setIsOpen }) => {
 
       <div className="w-full Lp-l:max-w-8lx bg-transparent top-0 left-0 right-0 h-auto mx-auto my-0 px-8 py-11 flex justify-between items-center z-50">
         <div className="w-57">
-          <Link to="/">
+          <Link to="/" className="h-12 flex items-center font-bold text-bh2">
             {/* <img src={Logo} alt="regalo-logo" className="w-full h-full" /> */}
+            <div id="LogoW">R</div>
+            <div id="LogoW">E</div>
+            <div id="LogoW">G</div>
+            <div id="LogoW">A</div>
+            <div id="LogoW">L</div>
+            <div id="LogoW">O</div>
           </Link>
         </div>
 
@@ -155,7 +170,10 @@ const Navbar = ({ isOpen, setIsOpen }) => {
                 <li className="relative cursor-pointer">
                   {User.result.name.charAt(0).toUpperCase()}
                   <ul className="group-block absolute top-14 -left-16 hidden group-hover:block rounded-xl py-2 px-8 bg-blue-500 z-50">
-                    <Link to="/Profile" className="cursor-pointer">
+                    <Link
+                      to={`/Profile/UserProfile/${User?.result?._id}`}
+                      className="cursor-pointer"
+                    >
                       <li className="py-2 px-7 hover:bg-blue-300 hover:text-black">
                         Profile
                       </li>

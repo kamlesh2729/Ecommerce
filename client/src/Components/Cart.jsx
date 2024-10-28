@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+// import Axios from "axios";
 
 import { TbLetterX, TbArrowNarrowRight } from "react-icons/tb";
 import CartBg from "../assets/cart/empty-cart.png"
-import { increseQty, decreseQty, deleteCart} from "../actions/cartaction";
+import { increseQty, decreseQty, deleteCart } from "../actions/cartaction";
 
 const Cart = ({ isClose, isOpen }) => {
   const Products = useSelector((state) => state.cartProducts.products);
-  // console.log(Products);
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
 
@@ -20,19 +20,19 @@ const Cart = ({ isClose, isOpen }) => {
     }
   }, [Products, total]);
 
-    const increase = (id, quantity) => {
-      if (quantity >= 1) {
-        dispatch(increseQty(id, quantity));
-      }
-    };
+  const increase = (id, quantity) => {
+    if (quantity >= 1) {
+      dispatch(increseQty(id, quantity));
+    }
+  };
 
   const decrease = (id, quantity) => {
-      if (quantity > 1) {
-        dispatch(decreseQty(id, quantity));
-      }
+    if (quantity > 1) {
+      dispatch(decreseQty(id, quantity));
+    }
   };
-    const removeTocart = (id) => {
-        dispatch(deleteCart(id));
+  const removeTocart = (id) => {
+    dispatch(deleteCart(id));
   };
 
   return (
@@ -58,7 +58,7 @@ const Cart = ({ isClose, isOpen }) => {
         </div>
       ) : (
         <div className=" h-[70vh] overflow-scroll">
-            {Products.map((item, i) => {
+          {Products.map((item, i) => {
             return (
               <div
                 key={i}
@@ -74,10 +74,7 @@ const Cart = ({ isClose, isOpen }) => {
 
                 <div className=" w-[74vw] Lp-l:w-[24vw] h-[17vh] Lp-l:h-[20vh] text-center">
                   <div className="w-full h-[6vh] Lp-l:h-[8vh] my-4 text-left pl-2 pr-6 Lp-l:pr-4 overflow-hidden">
-                    <h2 className="text-p font-normal">
-                      {" "}
-                      {item.title}
-                    </h2>
+                    <h2 className="text-p font-normal"> {item.title}</h2>
                   </div>
                   <div className=" flex justify-evenly mt-4 pt-5">
                     {/* Qty div */}
@@ -131,7 +128,9 @@ const Cart = ({ isClose, isOpen }) => {
       )}
 
       <div className=" flex border-t-2 border-dashed border-black">
-        <h3 className=" text-4h">subtotal amount $ {parseFloat(total).toFixed(2)}</h3>
+        <h3 className=" text-4h">
+          subtotal amount $ {parseFloat(total).toFixed(2)}
+        </h3>
         <button className="w-[230px] text-4h font-semibold p-3 my-4 rounded-md border-2 border-black border-solid bg-transparent text-black hover:bg-black hover:text-white hover:border-black">
           Go To Checkout
         </button>
