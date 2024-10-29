@@ -9,10 +9,9 @@ import { useParams } from 'react-router-dom';
 const UserDetails = () => {
   const { Id } = useParams();
   const users = useSelector((state) => state.usersReducer);
-  console.log(users);
   const currentProfile = users.filter((user) => user._id === Id)[0];
-  console.log(currentProfile);
   const User = useSelector((state) => state.currentUser);
+
 
   const [Switch, setSwitch] = useState(false);
   

@@ -35,7 +35,6 @@ body {
 }
 
 .login-bg {
-  /* background-image: url(./Assets/loginbg.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,12 +46,11 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #0000005f;
+  background: #f4f4f4a4;
   z-index: 1;
 }
 
 .signup-bg {
-  /* background-image: url(./Assets/signupbg.jpg); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -64,7 +62,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #0000005f;
+  background: #f4f4f4a4;
   z-index: 1;
 }
 

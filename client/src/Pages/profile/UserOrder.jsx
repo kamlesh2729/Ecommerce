@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UserOrder = () => {
+  const { Id } = useParams();
   const User = useSelector((state) => state.currentUser);
-  const carts = User?.result?.cartproducts;
+
+  const users = useSelector((state) => state.usersReducer);
+  const currentProfile = users.filter((user) => user._id === Id)[0];
+  const Carts = currentProfile?.carts;
 
   return (
     <div className="w-full h-full gap-8 py-16">
@@ -23,7 +27,7 @@ const UserOrder = () => {
         <div className="w-[20vw] flex flex-col"><span className=" uppercase">Ship To</span><span>User Name</span></div>
         <div className="w-[40vw] flex flex-col items-end"><span>ORDER # 123-456789-023987</span> <div className="flex justify-center items-start gap-8"><span className="border-r-2 border-gray-500 pr-4">View order details</span><span>Invice</span></div></div>
         </div>
-          {carts.map((cart, i) => {
+          {Carts.map((cart, i) => {
             return (
               <div
                 key={i}

@@ -9,10 +9,10 @@ export const getAllUsers = async (req, res) => {
       allUserDetails.push({
         _id: user._id,
         name: user.name,
-        email:user.email,
+        email: user.email,
         address: user.address,
         number: user.number,
-        carts: user.carts,
+        carts: user.cartproducts,
         joinedOn: user.joinedOn,
       });
     });

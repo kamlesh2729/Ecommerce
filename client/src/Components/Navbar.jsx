@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useNavigate} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+// import { jwtdecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -35,9 +37,16 @@ const Navbar = ({ isOpen, setIsOpen }) => {
       dispatch(setCurrentUser(null));
     };
 
-    useEffect(() => {
+  useEffect(() => {
+      const token = User?.token;
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.exp * 1000 < new Date().getTime()) {
+          handleLogout();
+        }
+      }
       dispatch(setCurrentUser(JSON.parse(localStorage.getItem("Profile"))));
-    }, [dispatch]);
+    }, [dispatch, User?.token]);
 
 
   const openMenu = () => {
@@ -56,14 +65,40 @@ const Navbar = ({ isOpen, setIsOpen }) => {
           <TbLetterX />
         </button>
         <ul className=" flex flex-col gap-12 text-h3 text-center font-semibold list-none lg:hidden">
-          <li>
-            <Link
-              to="/Auth"
-              onClick={openMenu}
-              className="font-text flex items-center gap-4 font-semibold text-black no-underline cursor-pointer transition-best duration-all hover:text-blue-500"
-            >
-              <IoPersonSharp /> Login or Signup
-            </Link>
+          <li className="flex items-center gap-4">
+            <IoPersonSharp />
+            {User === null ? (
+              <Link to="/Auth" onClick={openMenu}>
+                Log in
+              </Link>
+            ) : (
+              <ul className=" group hover:shadow-3xr hover:shadow-blue-500">
+                <li className="relative cursor-pointer">
+                  {User.result.name}
+                  <ul className="group-block absolute top-14 left-4 hidden group-hover:block rounded-xl py-2 px-8 bg-blue-500 z-50">
+                    <Link
+                      onClick={openMenu}
+                      to={`/Profile/UserProfile/${User?.result?._id}`}
+                      className="cursor-pointer"
+                    >
+                      <li className="py-2 px-7 text-white hover:bg-blue-300 hover:text-black">
+                        Profile
+                      </li>
+                    </Link>
+                    <Link
+                      to="/Auth"
+                      className="cursor-pointer"
+                      // onClick={openMenu}
+                      onClick={handleLogout}
+                    >
+                      <li className=" py-2 px-4 text-white hover:bg-blue-300 hover:text-black">
+                        Log Out
+                      </li>
+                    </Link>
+                  </ul>
+                </li>
+              </ul>
+            )}
           </li>
 
           <li>
@@ -88,7 +123,7 @@ const Navbar = ({ isOpen, setIsOpen }) => {
 
           <li>
             <Link
-              to="/Product"
+              to={`/Product/${User?.result?._id}`}
               onClick={openMenu}
               className="font-text flex items-center gap-4 font-semibold text-black no-underline cursor-pointer hover:text-blue-500"
             >
@@ -199,12 +234,15 @@ const Navbar = ({ isOpen, setIsOpen }) => {
           className=" absolute right-32 Lp-l:right-[21rem] cursor-pointer text-bh2 hover:text-blue-500"
         >
           <TbShoppingCart />
-          <span className="absolute right-32 Lp-l:right-[1rem] Lp-l:-top-1 text-p font-bold text-red-600">
+          <span className="w-9 absolute -right-2 Lp-l:-right-[1rem] -top-3 Lp-l:-top-3 text-p font-bold bg-red-600 text-white rounded-full">
             {Products.length}
           </span>
         </button>
 
-        <button className=" text-bh2 absolute top-14 right-14 cursor-pointer hover:text-blue-500 lg:hidden xl:hidden 2xl:hidden transition duration-all">
+        <button
+          onClick={openMenu}
+          className=" text-bh2 absolute top-14 right-14 cursor-pointer hover:text-blue-500 lg:hidden xl:hidden 2xl:hidden transition duration-all"
+        >
           <TbMenu2 />
         </button>
       </div>

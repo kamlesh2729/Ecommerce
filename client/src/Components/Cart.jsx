@@ -8,6 +8,7 @@ import { increseQty, decreseQty, deleteCart } from "../actions/cartaction";
 
 const Cart = ({ isClose, isOpen }) => {
   const Products = useSelector((state) => state.cartProducts.products);
+  
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
 
@@ -53,7 +54,7 @@ const Cart = ({ isClose, isOpen }) => {
         </button>
       </div>
       {Products.length === 0 ? (
-        <div className=" h-[70vh]">
+        <div className=" h-[70vh] flex items-center justify-center">
           <img src={CartBg} alt="empty cart background" />
         </div>
       ) : (
@@ -127,8 +128,8 @@ const Cart = ({ isClose, isOpen }) => {
         </div>
       )}
 
-      <div className=" flex border-t-2 border-dashed border-black">
-        <h3 className=" text-4h">
+      <div className=" flex Lp-l:gap-4 border-t-2 border-dashed border-black">
+        <h3 className=" text-4h mt-2 Lp-l:mt-7">
           subtotal amount $ {parseFloat(total).toFixed(2)}
         </h3>
         <button className="w-[230px] text-4h font-semibold p-3 my-4 rounded-md border-2 border-black border-solid bg-transparent text-black hover:bg-black hover:text-white hover:border-black">

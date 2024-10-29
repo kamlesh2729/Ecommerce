@@ -12,11 +12,8 @@ const Auth = () => {
 
   return (
     <section className="w-full Lp-l:max-w-8lx h-auto mx-auto">
-      <div className=" duration-300 ease-in-out">
-        {issignup ? <SignUp /> : <LogIn />}
-        <p onClick={handelSwitch}>
-          {issignup ? "Alreday have an account?" : "Don't have an account?"}
-        </p>
+      <div className=" transition-all duration-300 ease-in-out">
+        {issignup ? <SignUp handelSwitch={handelSwitch} /> : <LogIn handelSwitch={handelSwitch} />}
       </div>
     </section>
   );

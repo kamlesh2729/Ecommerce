@@ -1,5 +1,6 @@
-import {useState } from "react";
+import {useEffect, useState } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { useDispatch } from "react-redux";
 import "./App.css";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -8,9 +9,15 @@ import Navbar from "./Components/Navbar";
 import Cart from "./Components/Cart";
 import AllRoutes from "./AllRoutes";
 import Footer from "./Components/Footer";
+import {fetchAllUsers} from "./actions/useraction"
 
 function App() {
   const [isOpen, setIsOpen] = useState();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllUsers());
+  })
 
   const isClose = () => {
     setIsOpen(!isOpen);
