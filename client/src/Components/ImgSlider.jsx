@@ -22,7 +22,7 @@ const prevImage = () => {
   useEffect(() => {
     setTimeout(() => { 
       setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length);
-    }, 5000);
+    }, 7000);
   }, [currentIndex]);
   return (
     <section className="w-full h-[70vh] mb-2 flex justify-center items-center relative">
@@ -48,18 +48,11 @@ const prevImage = () => {
         <IoIosArrowDroprightCircle />
       </button>
       <div className="w-test h-[4vh] mb-4 flex items-center justify-center gap-8 absolute z-10 bottom-0">
-        <span
-          className="w-[15px] h-[15px] mx-[2px] bg-yellow-500 rounded cursor-pointer"
-          onClick={Images}
-        ></span>
-        <span
-          className="w-[15px] h-[15px] mx-[2px] bg-yellow-500 rounded cursor-pointer"
-          onClick={Images}
-        ></span>
-        <span
-          className="w-[15px] h-[15px] mx-[2px] bg-yellow-500 rounded cursor-pointer"
-          onClick={Images}
-        ></span>
+        {Images.map((slide, slideIndex) => (
+          <span key={slideIndex} className={`w-[15px] h-[15px] mx-[2px] bg-gray-400 rounded cursor-pointer ${currentIndex ? "bg-gray-500" : "bg-yellow-400"}`}
+          onClick={()=>setCurrentIndex(slideIndex)}>
+          </span>
+        ))}
       </div>
     </section>
   );

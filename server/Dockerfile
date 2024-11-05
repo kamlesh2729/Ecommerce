@@ -1,3 +1,4 @@
+bashCopy code
 # Use the official Node.js image as the base image
 FROM node:21
 
@@ -18,4 +19,4 @@ ENV PORT 5000
 EXPOSE 5000
 
 # Define the entry point for the container
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
