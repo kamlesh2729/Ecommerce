@@ -2,7 +2,7 @@
 FROM node:21
 
 # Set the working directory in the container
-WORKDIR /user/src/app
+WORKDIR /app
 
 # Copy the application files into the working directory
 COPY package*.json ./
