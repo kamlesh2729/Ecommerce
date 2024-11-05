@@ -4,7 +4,7 @@ FROM node:21.6.2
 
 ENV 5000
 
-WORKDIR /app
+WORKDIR /server/app
 
 COPY ["package.json", "package-lock.json*", "./"]
 

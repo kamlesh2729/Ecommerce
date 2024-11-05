@@ -1,15 +1,15 @@
 import React, { useRef } from 'react'
 import { Link } from "react-router-dom";
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { useGSAP } from '@gsap/react';
 
 import Men from "../assets/Menshopping.jpg";
 import Women from "../assets/women2.jpg";
 import Jewelery from "../assets/jewelery.jpg";
 import Electronics from "../assets/electronic.jpg";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+// gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Hero = () => {
   const Mensref = useRef();
@@ -18,45 +18,45 @@ const Hero = () => {
   const Electronicref = useRef();
   const mainref = useRef();
 
-  useGSAP(() => {
-    gsap.fromTo(Mensref.current, {
-      x: -100,scrollTrigger: { trigger: Mensref.current, start: "10% bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
-      opacity:0
-    },
-    {x: 1, scrollTrigger: { trigger: Mensref.current, start: "10% bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
-  opacity:1
-    }
-    )
-  },{scope:mainref}
-  )
-  useGSAP(() => {
-    gsap.fromTo(Womenref.current, {
-      scrollTrigger: { trigger: Womenref.current, start: "10% bottom", end: "bottom bottom", scrub: true, toggleActions: "restart none none none" },
-      x: 100, opacity: 0
-    },
-      {
-        scrollTrigger: { trigger: Womenref.current, start: "10% bottom", end: "bottom bottom", scrub: true, toggleActions: "restart none none none" },
-        x: 1, opacity: 1
-      }
-    )
-  }, { scope: mainref });
-  useGSAP(() => {
-    gsap.from(Jeweleryref.current, {
-      scrollTrigger: { trigger: Jeweleryref.current, start: "bottom bottom", end: "top 20%", scrub: true,},
-      y: -100, opacity: 0
-    }
-    )
-  });
-  useGSAP(() => {
-    gsap.fromTo(Electronicref.current, {
-      scrollTrigger: { trigger: Electronicref.current, start: "top bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
-      y: 150, opacity:0
-    },
-    {scrollTrigger: { trigger: Electronicref.current, start: "top bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
-      y: 1, opacity:1
-    }
-    )
-  },{scope:mainref})
+  // useGSAP(() => {
+  //   gsap.fromTo(Mensref.current, {
+  //     x: -100,scrollTrigger: { trigger: Mensref.current, start: "10% bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
+  //     opacity:0
+  //   },
+  //   {x: 1, scrollTrigger: { trigger: Mensref.current, start: "10% bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
+  // opacity:1
+  //   }
+  //   )
+  // },{scope:mainref}
+  // )
+  // useGSAP(() => {
+  //   gsap.fromTo(Womenref.current, {
+  //     scrollTrigger: { trigger: Womenref.current, start: "10% bottom", end: "bottom bottom", scrub: true, toggleActions: "restart none none none" },
+  //     x: 100, opacity: 0
+  //   },
+  //     {
+  //       scrollTrigger: { trigger: Womenref.current, start: "10% bottom", end: "bottom bottom", scrub: true, toggleActions: "restart none none none" },
+  //       x: 1, opacity: 1
+  //     }
+  //   )
+  // }, { scope: mainref });
+  // useGSAP(() => {
+  //   gsap.from(Jeweleryref.current, {
+  //     scrollTrigger: { trigger: Jeweleryref.current, start: "bottom bottom", end: "top 20%", scrub: true,},
+  //     y: -100, opacity: 0
+  //   }
+  //   )
+  // });
+  // useGSAP(() => {
+  //   gsap.fromTo(Electronicref.current, {
+  //     scrollTrigger: { trigger: Electronicref.current, start: "top bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
+  //     y: 150, opacity:0
+  //   },
+  //   {scrollTrigger: { trigger: Electronicref.current, start: "top bottom", end:"bottom bottom", scrub: true, toggleActions: "restart none none none" },
+  //     y: 1, opacity:1
+  //   }
+  //   )
+  // },{scope:mainref})
 
   return (
     <>
