@@ -30,7 +30,7 @@ const Login = ({ handelSwitch}) => {
   }
 
   return (
-    <section className=" w-[80vw] h-[80vh] flex flex-col justify-center items-center mx-auto py-8 login-bg relative z-3">
+    <section className=" w-[60vw] h-[80vh] flex flex-col justify-center items-center mx-auto py-8 login-bg relative z-3">
       <h1 className=" uppercase font-semibold text-h4 mx-auto mt-4 absolute z-3 top-0">
         Log In here
       </h1>

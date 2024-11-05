@@ -22,7 +22,6 @@ const Signup = ({ handelSwitch }) => {
     const upper = new RegExp("(?=.*[A-Z])");
     const number = new RegExp("(?=.*[0-9])");
     const spcialchar = new RegExp("(?=.*[!@#$%^&*])");
-    const length = new RegExp("(?=.(6,)])");
 
     if (!name) {
     setMessage("Plaese enter name");
@@ -42,13 +41,9 @@ const Signup = ({ handelSwitch }) => {
       setMessage("At least one number include");
     } else if (!spcialchar.test(password)) {
       setMessage("At least one spcial character include");
-    } else if (!length.test(password)) {
-      setMessage("Password lenght must be min 6");
     } else {
     dispatch(signup({ name, email, password }, navigate));
     }
-
-    // dispatch(signup({ name, email, password }, navigate));
   };
 
   const PasswordShowHide = () => {
@@ -56,7 +51,7 @@ const Signup = ({ handelSwitch }) => {
   };
 
   return (
-    <section className="w-[80vw] h-[100vh] flex flex-col justify-center items-center mx-auto py-4 signup-bg">
+    <section className="w-[60vw] h-[100vh] flex flex-col justify-center items-center mx-auto py-4 signup-bg">
       <h1 className=" uppercase font-semibold text-h4 mx-auto mt-4 absolute z-3 top-0">
         Sign Up here
       </h1>
@@ -103,7 +98,7 @@ const Signup = ({ handelSwitch }) => {
           </label>
           <input
             className="w-full bg-slate-200 py-5 px-7 text-p border outline-none mb-9 focus:border-b-2 focus:border-t-0 border-r-0 border-l-0 focus:border-text-orange"
-            type={showpassword ? "text" : "password"}
+            type={showpassword ? "password" : "text"}
             name="password"
             id="Password"
             ref={passwordref}

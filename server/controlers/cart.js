@@ -10,25 +10,33 @@ export const addcartproducts = async (req, res) => {
   
   try {
     if (mongoose.Types.ObjectId.isValid(_id)) {
+
+            const updatedProfile = await users.findByIdAndUpdate(
+              _id,
+              {
+                $addToSet: {
+                  cartproducts: [{ id, title, image, price, quantity }],
+                },
+              },
+              { new: true }
+            );
+            res.status(200).json(updatedProfile);
+
+      
       const Users = await users.findOne({ _id });
       // console.log(Users);
-      const existingItem = await Users.cartproducts.find();
-      console.log(existingItem);
-      res.status(201).json(existingItem);
+      const existingItem = await Users.cartproducts.id;
+      // console.log(existingItem);
+      // res.status(201).json(existingItem);
 
-      // if (existingItem) {
-      //   // const quantity = { oldqty += quantity };
-      //   const updatedProfile = await users.findByIdAndUpdate(_id, { $addToSet: { cartproducts: [{quantity}] } },
-      //     { new: true }
-      //   );
-      //   res.status(200).json(updatedProfile);
-      // }
-      const updatedProfile = await users.findByIdAndUpdate(
-        _id,
-        { $addToSet: { cartproducts: [{ id, title, image, price, quantity }] } },
-        { new: true }
-      );
+      if (existingItem) {
+        // const quantity = { oldqty += quantity };
+        const updatedProfile = await users.findByIdAndUpdate(_id, { $addToSet: { cartproducts: [{quantity}] } },
+          { new: true }
+        );
         res.status(200).json(updatedProfile);
+      }
+
       }
   } catch (error) {
     res.status(405).json({ message: error.message, error });
@@ -37,16 +45,13 @@ export const addcartproducts = async (req, res) => {
 
 export const increseQuantity = async (req, res) => {
   const { id: _id } = req.params;
+  // const Users = await users.findOne({ _id });
 
   if (!mongoose.Types.ObjectId.isValid(_id)) {
     return res.status(404).send("Question unavailable...");
   }
   updateNoOfQuestions(_id, noOfAnswers);
   try {
-    await Questions.updateOne(
-      { _id },
-      { $pull: { answer: { _id: answerId } } }
-    );
     res.status(200).json({ message: "Successfully deleted..." });
   } catch (error) {
     res.status(405).json(error);

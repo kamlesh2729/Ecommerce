@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import Axios from "axios";
 
 import { TbLetterX, TbArrowNarrowRight } from "react-icons/tb";
 import CartBg from "../assets/cart/empty-cart.png"
@@ -8,7 +7,6 @@ import { increseQty, decreseQty, deleteCart } from "../actions/cartaction";
 
 const Cart = ({ isClose, isOpen }) => {
   const Products = useSelector((state) => state.cartProducts.products);
-  
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
 
@@ -53,6 +51,7 @@ const Cart = ({ isClose, isOpen }) => {
           <TbArrowNarrowRight />
         </button>
       </div>
+      {/* {User === null ? ():()} */}
       {Products.length === 0 ? (
         <div className=" h-[70vh] flex items-center justify-center">
           <img src={CartBg} alt="empty cart background" />
