@@ -1,22 +1,18 @@
-bashCopy code
-# Use the official Node.js image as the base image
-FROM node:21
+#Sample Dockerfile for NodeJS Apps
 
-# Set the working directory in the container
+FROM node:21.6.2
+
+ENV 5000
+
 WORKDIR /app
 
-# Copy the application files into the working directory
-COPY package*.json ./
+COPY ["package.json", "package-lock.json*", "./"]
 
-# Install the application dependencies
-RUN npm install
+RUN npm install 
 
 COPY . .
 
-#application run on port
-ENV PORT 5000
-
 EXPOSE 5000
 
-# Define the entry point for the container
-CMD ["npm", "start"]
+CMD [ "npm", "start" ]
+
